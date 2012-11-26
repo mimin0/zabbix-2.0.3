@@ -1,9 +1,12 @@
 #!/bin/bash
 
+DBuser=$(root)
+DBpass=$(gsdysx)
+
 set -x
 
 sudo apt-get update
-apt-get install mc apache2 mysql-server php5 php5-mysql -y
+apt-get install mc apache2 mysql-server php5 php5-gd php5-mysql -y
 aptitude install build-essential checkinstall libmysqlclient-dev libcurl4-openssl-dev libsnmp-dev libopenipmi-dev libiksemel-dev -y
 
 echo 'Download zabbix 2\n'
@@ -17,7 +20,7 @@ cd ./..
 rm -rf /zabbi*
 cd /zabbix
 
-#shell> mysql -u -p
+shell> mysql -u$DBuser -p$DBpass
 #mysql> create database zabbix character set utf8;
 #mysql> quit;
 #mysql -u -p zabbix < database/mysql/schema.sql
